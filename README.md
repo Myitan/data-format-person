@@ -25,14 +25,14 @@ The expected output in xml:
 
 ```xml
 <phonebook>
-    <subscribers>
-        <phone>123-456-7890</phone>
+    <subscriber>
+        <phone-number>123-456-7890</phone-number>
         <client-name>John Doe</client-name>
-    </subscribers>
-    <subscribers>
-        <phone>555-555-5555</phone>
+    </subscriber>
+    <subscriber>
+        <phone-number>555-555-5555</phone-number>
         <client-name>John Doe</client-name>
-    </subscribers>
+    </subscriber>
 </phonebook>
 ```
 
@@ -43,11 +43,11 @@ The expected output in xml:
 The domain classes are in the package of `com.epam.training.person.domain`:
 
 - `Person` (Record)
-- `Location` (R) contains fields of `iso3166`, `country`, `zip`, `city` all of them are `String`
-- `Phone` (R) contains fields of `area`, `region`, `local` all of them are `String`
+- `Location` (Record) contains fields of `iso3166`, `country`, `zip`, `city` all of them are `String`
+- `Phone` (Record) contains fields of `area`, `region`, `local` all of them are `String`
 - `Gender` (Enum) contains `MALE`, and `FEMALE` instances
 - `Subscriber` (Class) contains fields of `phone` and `clientName`, both of them are `String`
-- `Phonebook` (C) contains only list of `Subscribers`
+- `Phonebook` (Class) contains only list of `Subscribers`
 
 TODO: add diagram
 
