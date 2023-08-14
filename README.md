@@ -49,7 +49,7 @@ The domain classes are in the package of `com.epam.training.person.domain`:
 - `Subscriber` (Class) contains fields of `phone` and `clientName`, both of them are `String`
 - `Phonebook` (Class) contains only list of `Subscribers`
 
-TODO: add diagram
+![](https://raw.githubusercontent.com/epam-java-cre/exercise-specification-images/main/data-format-person/domain.png)
 
 ## Persistence
 
