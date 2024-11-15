@@ -1,7 +1,8 @@
 # Introduction
 
-The goal of the exercise is to process CSV file that contains persons' contact and personal data (name, place of birth, phone numbers, etc). 
-Perform some transformation on the red data and create a phonebook that is represented as an XML file.
+The goal of the exercise is to process CSV file that contains persons' contact and personal data (name, place of birth,
+phone numbers, etc). 
+Perform some transformation on the read data and create a phonebook that is represented as an XML file.
 To handle the XML file, please use the learnt technology (JAXB).
 
 
@@ -9,17 +10,19 @@ To handle the XML file, please use the learnt technology (JAXB).
 
 The top element of the domain model is `Person` class. Every line of the CSV file represents the data of a single person.
 
-There are some complex information represented by custom classes like `Location` or `Phone`.
+Some details are represented by custom classes like `Location` or `Phone`.
 
-You can persist the phone number in a strict format but from CSV file you can read two formats. To parse from different formats you have to use `PhoneParser` class.
-
-`Subscriber` representing one element of phonebook. The exercise is to transform a `Person` to a `Subscriber`.
+The CSV file you can contain phone numbers ########## or ###-###-#### format,
+where # denotes a numeric digit.
+To parse phone from text format, implement `PhoneParser` class.
 
 See an example of test data from CSV:
 
 ```csv
 2b1a8035-0aa3-4865-9f0f-5c3e46a11289,John Doe,1985-07-15,US,United States,12345,New York,Male,1234567890,555-555-5555,-
 ```
+
+Please note that the person CSV row can contain up to 3 phone numbers.
 
 The expected output in xml:
 
@@ -36,7 +39,12 @@ The expected output in xml:
 </phonebook>
 ```
 
-> The example shows one person, one location and a list of phones along with them.
+The example shows one person, one location and a list of phones along with them.
+
+`Subscriber` represents one element of phonebook. The exercise is to transform a `Person` to a `Subscriber`.
+
+When creating the XML output file, you have to persist the phone number in ###-###-#### format.
+
 
 # Specification
 
@@ -79,10 +87,11 @@ In the root package (`com.epam.training.person`), you can find the following typ
 
 ## XML
 
-In this exercise we use *JAXB* to persist objects to XML format. You need to prepare `Subscriber` and `Phonebook`
-by using annotations of JAXB to handle objects and transform them to XML elements automatically.
+In this exercise you have to use **JAXB** to persist objects to XML format.
+You need to prepare `Subscriber` and `Phonebook` by using JAXB annotations
+to handle objects and transform them to XML elements automatically.
 
-> Annotations can be found in the package of `jakarta.xml.bind.annotation`.
+Annotations can be found in `jakarta.xml.bind.annotation` package.
 
 ## Steps of the Execution
 
@@ -95,8 +104,8 @@ As an execution, your application should take the following steps in the next or
 ## Steps of Implementation
 
 1. You get the `Application` class
-2. You need to implement all the enums, classes and records placed in the package of`com.epam.training.person.domain`
-3. You need to create and implement all the interfaces and classes in the package of `com.epam.training.person.persistence`
+2. You need to implement all the enums, classes and records placed in the package `com.epam.training.person.domain`
+3. You need to create and implement all the interfaces and classes in the package `com.epam.training.person.persistence`
 4. You also need to create and implement the `PersonDateOfBirthPredicate` and the `PersonSubscriberTransformer` classes
 5. You have to make sure that the `PhoneParser` can handle the two different formats of phone numbers
 
