@@ -12,8 +12,9 @@ The top element of the domain model is `Person` class. Every line of the CSV fil
 
 Some details are represented by custom classes like `Location` or `Phone`.
 
-The CSV file you can contain phone numbers ########## or ###-###-#### format,
-where # denotes a numeric digit.
+The CSV file you can contain phone numbers in `##########` or `###-###-####` format,
+where `#` denotes a numeric digit.
+
 To parse phone from text format, implement `PhoneParser` class.
 
 See an example of test data from CSV:
@@ -24,7 +25,7 @@ See an example of test data from CSV:
 
 Please note that the person CSV row can contain up to 3 phone numbers.
 
-The expected output in xml:
+The expected output XML:
 
 ```xml
 <phonebook>
@@ -43,7 +44,7 @@ The example shows one person, one location and a list of phones along with them.
 
 `Subscriber` represents one element of phonebook. The exercise is to transform a `Person` to a `Subscriber`.
 
-When creating the XML output file, you have to persist the phone number in ###-###-#### format.
+When creating the XML output file, you have to persist the phone number in `###-###-####` format.
 
 
 # Specification
@@ -68,7 +69,10 @@ The interfaces and classes responsible for persisting data can be found in `com.
 - `CSVPersonReader`
 - `XMLSuscriberWriter`
 
-Note: `DataReader` and `DataWriter` are generic types!
+Note:
+- `DataReader` and `DataWriter` are generic types.
+- Both `DataReader` and `DataWriter` implement `AutoCloseable` interface.
+  They must close the resources that are passed in constructor.
 
 ![](https://raw.githubusercontent.com/epam-java-cre/exercise-specification-images/main/data-format-person/persistence.png)
 
@@ -114,7 +118,8 @@ earlier than the given date and `false` otherwise.
 
 `PersonSubscriberTransformer` transforms list of persons to list of subscribers.
 
-`PhoneParser` is responsible for parsing strings representing phone numbers. The two formats are `##########` or `###-###-####`.
+`PhoneParser` is responsible for parsing strings representing phone numbers.
+The two formats are `##########` or `###-###-####`.
 In case of any other formats, the `parse` function raises `IllegalArgumentException`.
 
 ```java
