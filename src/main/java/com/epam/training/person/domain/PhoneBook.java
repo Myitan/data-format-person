@@ -16,7 +16,4 @@ public class PhoneBook {
     public PhoneBook(List<Subscriber> subscribers){
         this.subscribers = subscribers;
     }
-
-    public List<Subscriber> getSubscribers(){return subscribers;}
-    public void setSubscribers(List<Subscriber> subscribers){this.subscribers = subscribers;}
 }

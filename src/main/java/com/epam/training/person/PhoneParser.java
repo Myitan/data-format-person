@@ -2,27 +2,22 @@ package com.epam.training.person;
 
 import com.epam.training.person.domain.Phone;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class PhoneParser {
 
-    private static final Pattern DASH_FORMAT = Pattern.compile("^(\\d{3})-(\\d{3})-(\\d{4})$");
-    private static final Pattern NORMAL_FORMAT = Pattern.compile("^(\\d{3})(\\d{3})(\\d{4})$");
-
-    public static Phone parse(String value) throws IllegalArgumentException {
-        if ( value == null || value.trim().isEmpty() ) {
-            throw new IllegalArgumentException("Phone string cannot be null or empty");
+    public static Phone parse(String value) {
+        if (value == null || value.trim().isEmpty()) {
+            throw new IllegalArgumentException("Phone number cannot be null or empty");
         }
 
-        Matcher dashMatcher = DASH_FORMAT.matcher(value);
-        if (dashMatcher.matches()){
-            return new Phone(dashMatcher.group(1),dashMatcher.group(2),dashMatcher.group(3));
+        String cleaned = value.replaceAll("-", "").replaceAll("\\s+", "");
+        if (cleaned.length() != 10) {
+            throw new IllegalArgumentException("Invalid phone number format: " + value);
         }
-        Matcher normalMatcher = NORMAL_FORMAT.matcher(value);
-        if (normalMatcher.matches()){
-            return new Phone(normalMatcher.group(1),normalMatcher.group(2),normalMatcher.group(3));
-        }
-        throw new IllegalArgumentException("Invalid phone number format: " + value );
+
+        String area = cleaned.substring(0, 3);
+        String region = cleaned.substring(3, 6);
+        String local = cleaned.substring(6, 10);
+
+        return new Phone(area, region, local);
     }
 }

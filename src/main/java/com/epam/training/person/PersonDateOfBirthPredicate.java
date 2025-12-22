@@ -5,7 +5,7 @@ import com.epam.training.person.domain.Person;
 import java.time.LocalDate;
 
 public class PersonDateOfBirthPredicate implements Predicate<Person> {
-    private LocalDate dateLimit;
+    private final LocalDate dateLimit;
 
     public PersonDateOfBirthPredicate(LocalDate dateLimit){
         this.dateLimit = dateLimit;

@@ -10,7 +10,7 @@ import java.io.OutputStreamWriter;
 import java.util.List;
 
 public class XMLSubscriberWriter implements DataWriter<List<Subscriber>> {
-    private OutputStreamWriter outputWriter;
+    private final OutputStreamWriter outputWriter;
 
     public XMLSubscriberWriter(OutputStream out){
         this.outputWriter = new OutputStreamWriter(out);

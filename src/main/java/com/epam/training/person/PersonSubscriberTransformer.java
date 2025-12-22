@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PersonSubscriberTransformer implements Transformer<List<Person> , List<Subscriber> > {
-    private Predicate<Person> predicate;
+    private final Predicate<Person> predicate;
 
     public PersonSubscriberTransformer(Predicate<Person> predicate){
         this.predicate = predicate;
