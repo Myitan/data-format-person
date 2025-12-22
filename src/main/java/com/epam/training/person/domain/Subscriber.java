@@ -1,28 +1,23 @@
 package com.epam.training.person.domain;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 
 @XmlRootElement(name = "subscriber")
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Subscriber {
-    @XmlElement(name = "phone-number")
-    private String phone;
-    @XmlElement(name = "client-name")
-    private String clientName;
-
-
-    public Subscriber(){}
-    public Subscriber(String phone,String clientName){
-        this.phone = phone;
-        this.clientName = clientName;
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(propOrder = {"phone", "clientName"})
+public record Subscriber(
+        String phone,
+        String clientName
+) {
+    public Subscriber() {
+        this(null, null);
     }
-
-    public String getPhone(){return phone;}
-    public void setPhone(String phone){this.phone = phone;}
-    public String getClientName(){return clientName;}
-    public void setClientName(String clientName){this.clientName = clientName;}
-
+    @XmlElement(name = "client-name")
+    public String getClientName() {
+        return clientName;
+    }
+    @XmlElement(name = "phone-number")
+    public String getPhone() {
+        return phone;
+    }
 }
